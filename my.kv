@@ -1,0 +1,884 @@
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                color: 0, 1, 1, 1
+                font_size: 50
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8}
+                text: "Name: "
+                color: 0.556, 0.894, 0.686, 1
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.12
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13}
+                text: "Email: "
+                color: 0.556, 0.894, 0.686, 1
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                size_hint: 0.4, 0.12
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13*2}
+                text: "Password: "
+                color: 0.556, 0.894, 0.686, 1
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13*2}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: 30
+            background_color: 0.556, 0.894, 0.686, 1
+            text: "Go Back"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.15
+            text: "Submit"
+            background_color: 0.556, 0.894, 0.686, 1
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+    
+<MainWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background2.jpg'
+    name: "main"
+    GridLayout:
+        cols: 1
+        FloatLayout:
+            Label:
+                text: '"The Road To Success and Greatness Is Always Paved With Consistent Hard Work.'
+                font_size: 15
+                bold: True
+                italic: True
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                pos_hint:{"x":0.06,"y":0.07}
+            Label:
+                text: 'Outwork Your Competitors, Be Authentic And Above All Else. Chase Your Greatness"'
+                font_size: 15
+                bold: True
+                italic: True
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                pos_hint:{"x":0.1,"y":0.04}
+
+            Button:
+                pos_hint:{"x":0.19,"y":0.55}
+                size_hint: 0.3, 0.3
+                background_color: 0, 0.75, 1, 1
+                on_release:
+                    app.root.current = "Workoutprogress"
+                    root.manager.transition.direction = "down"
+                StackLayout:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    orientation: 'lr-tb'
+                    Image:
+                        source: 'heartbeat.png'
+                        size_hint_y: None
+                        width: 74
+                    Label:
+                        font_size: 18
+                        size_hint_y: None
+                        width: 100
+                        text: " My Workout progress"
+                        color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.52,"y":0.55}
+                size_hint: 0.3, 0.3
+                background_color: 0, 0.75, 1, 1
+                on_release:
+                    app.root.current = "Caloriecount"
+                    root.manager.transition.direction = "down"
+                StackLayout:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    orientation: 'lr-tb'
+                    Image:
+                        source: '3.png'
+                        size_hint_y: None
+                        width: 74
+                    Label:
+                        font_size: 20
+                        size_hint_y: None
+                        width: 100
+                        text: "Daily Calorie Count"
+                        color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.19,"y":0.21}
+                size_hint: 0.3, 0.3
+                background_color: 0, 0.75, 1, 1
+                on_release:
+                    app.root.current = "Goal"
+                    root.manager.transition.direction = "down"
+                StackLayout:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    orientation: 'lr-tb'
+                    Image:
+                        source: '4.png'
+                        size_hint_y: None
+                        width: 74
+                    Label:
+                        font_size: 20
+                        size_hint_y: None
+                        width: 100
+                        text: "My Goals"
+                        color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.52,"y":0.21}
+                size_hint: 0.3, 0.3
+                background_color: 0, 0.75, 1, 1
+                StackLayout:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    orientation: 'lr-tb'
+                    Image:
+                        source: '5.png'
+                        size_hint_y: None
+                        width: 74
+                    Label:
+                        font_size: 19
+                        size_hint_y: None
+                        width: 100
+                        text: "Community"
+                        color: 1, 0.64, 0, 1
+            ImageButton:
+                source: 'plus.png'
+                pos_hint:{"x":0.3,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'add.png'
+                pos_hint:{"x":0.45,"y":0.03}
+                size_hint: 0.27, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'settings.png'
+                pos_hint:{"x":0.6,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'exit.png'
+                pos_hint:{"x":0.75,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+                on_release:
+                    app.root.current = "login"
+                    root.manager.transition.direction = "down"              
+<loginWindow>:    
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background2.jpg'
+    name: "login"
+    email: email
+    password: password
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+            Label:
+                text: "BetterFit"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.09, "top":0.8}
+                font_size: 60
+            Label:
+                text: "Challenge Yourself"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.1, "top":0.74}
+                font_size: 20
+            TextInput:
+                id: email
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.29, "top":0.6}
+                size_hint: 0.37, 0.09
+            TextInput:
+                id: password
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                password: True
+                pos_hint: {"x": 0.29, "top":0.5}
+                size_hint: 0.37, 0.09
+            Button:
+                pos_hint:{"x":0.38,"y":0.33}
+                size_hint: 0.2, 0.04
+                font_size: 20
+                background_color: 0, 0.75, 1, 1
+                color: 1, 0.64, 0, 1
+                text: "Login"
+                radius: [50,]
+                on_release:
+                    root.manager.transition.direction = "up"
+                    root.loginBtn()
+            Button:
+                pos_hint:{"x":0.38,"y":0.287}
+                size_hint: 0.2, 0.04
+                font_size: 20
+                background_color: 0, 0.75, 1, 1
+                color: 1, 0.64, 0, 1
+                text: "Sign Up"
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.createBtn()
+            ImageButton:
+                source: 'icon3.jpg'
+                pos_hint:{"x":0.25,"y":0.15}
+                size_hint: 0.3, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x
+            ImageButton:
+                source: 'icon2.jpg'
+                pos_hint:{"x":0.33,"y":0.15}
+                size_hint: 0.3, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x
+            ImageButton:
+                source: 'icon.jpg'
+                pos_hint:{"x":0.42,"y":0.15}
+                size_hint: 0.3, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10          
+<WorkoutprogressWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background2.jpg'
+    name: "Workoutprogress"
+    date: date
+    body:body
+    type:type
+    warmupweight:warmupweight
+    warmupreps:warmupreps
+    GridLayout:
+        cols: 1
+        FloatLayout:
+            TextInput:
+                id: body
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.51, "top":0.84}
+                size_hint: 0.48, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Body Part"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0, "top":0.91}
+                font_size: 24
+            TextInput:
+                id: type
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.51, "top":0.77}
+                size_hint: 0.48, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Exercise Type"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0, "top":0.84}
+                font_size: 24
+            TextInput:
+                id: date
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.51, "top":0.7}
+                size_hint: 0.25, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Date"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0, "top":0.77}
+                font_size: 24
+            Label:
+                text: "Weight"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.3, "top":0.7}
+                font_size: 24
+            Label:
+                text: "Reps"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.47, "top":0.7}
+                font_size: 24
+            TextInput:
+                id: warmupweight
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.65, "top":0.56}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Warm Up"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.1, "top":0.64}
+                font_size: 24
+            TextInput:
+                id: warmupreps
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.83, "top":0.56}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Set 1"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.1, "top":0.55}
+                font_size: 24
+            TextInput:
+                id: warmupweight
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.65, "top":0.47}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: warmupreps
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.83, "top":0.47}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Set 2"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.1, "top":0.46}
+                font_size: 24
+            TextInput:
+                id: warmupweight
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.65, "top":0.38}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: warmupreps
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.83, "top":0.38}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Set 3"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.1, "top":0.37}
+                font_size: 24
+            TextInput:
+                id: warmupweight
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.65, "top":0.29}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: warmupreps
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.83, "top":0.29}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Button:
+                pos_hint:{"x":0.77,"y":0.13}
+                size_hint: 0.2, 0.05
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Submit"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.05,"y":0.3}
+                size_hint: 0.3, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Progress this month"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.02,"y":0.93}
+                size_hint: 0.2, 0.05
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "profile"
+                color: 1, 0.64, 0, 1
+            ImageButton:
+                source: 'plus.png'
+                pos_hint:{"x":0.3,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'add.png'
+                pos_hint:{"x":0.45,"y":0.03}
+                size_hint: 0.27, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'settings.png'
+                pos_hint:{"x":0.6,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'exit.png'
+                pos_hint:{"x":0.75,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "down"
+<CaloriecountWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background2.jpg'
+    name: "Caloriecount"
+    date: date
+    GridLayout:
+        cols: 1
+        FloatLayout:
+            TextInput:
+                id: date
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.03, "top":0.89}
+                size_hint: 0.3, 0.08
+                on_text_validate: root.on_enter()
+                hint_text: "Start - end Date"
+                hint_text_color: 0,0,0,1
+            Button:
+                pos_hint:{"x":0.02,"y":0.93}
+                size_hint: 0.2, 0.05
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "profile"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.36, "y":0.8}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Monday"
+                color: 1, 0.64, 0, 1
+                on_release:
+                    app.root.current = "Monday"
+                    root.manager.transition.direction = "down"
+            Button:
+                pos_hint:{"x":0.36, "y":0.7}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Tuesday"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.36, "y":0.6}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Wednesday"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.36, "y":0.5}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Thursday"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.36, "y":0.4}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Friday"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.36, "y":0.3}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Saturday"
+                color: 1, 0.64, 0, 1
+            Button:
+                pos_hint:{"x":0.36, "y":0.2}
+                size_hint: 0.6, 0.09
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "Sunday"
+                color: 1, 0.64, 0, 1
+            ImageButton:
+                source: 'plus.png'
+                pos_hint:{"x":0.3,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'add.png'
+                pos_hint:{"x":0.45,"y":0.03}
+                size_hint: 0.27, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'settings.png'
+                pos_hint:{"x":0.6,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'exit.png'
+                pos_hint:{"x":0.75,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "down"
+<MondayWindow>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'background2.jpg'
+    name: "Monday"
+    calorie:calorie
+    carbs:carbs
+    fats:fats
+    protien:protien
+    GridLayout:
+        cols: 1
+        FloatLayout:
+            Label:
+                text: "Breakfast"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.3, "top":0.98}
+                font_size: 24
+            TextInput:
+                id: calorie
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.51, "top":0.86}
+                size_hint: 0.48, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "carbs"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.2, "top":0.88}
+                font_size: 24
+            Label:
+                text: "Protien"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.35, "top":0.88}
+                font_size: 24
+            Label:
+                text: "fats"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.5, "top":0.88}
+                font_size: 24
+            TextInput:
+                id: carbs
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.55, "top":0.76}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: protien
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.7, "top":0.76}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: fats
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.86, "top":0.76}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Macros"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.05, "top":0.84}
+                font_size: 24
+
+
+
+
+
+            Label:
+                text: "Lunch"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.3, "top":0.78}
+                font_size: 24
+            TextInput:
+                id: calorie
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.51, "top":0.66}
+                size_hint: 0.48, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "carbs"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.2, "top":0.68}
+                font_size: 24
+            Label:
+                text: "Protien"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.35, "top":0.68}
+                font_size: 24
+            Label:
+                text: "fats"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.5, "top":0.68}
+                font_size: 24
+            TextInput:
+                id: carbs
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.55, "top":0.56}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: protien
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.7, "top":0.56}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: fats
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.86, "top":0.56}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Macros"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.05, "top":0.64}
+                font_size: 24
+
+
+
+            Label:
+                text: "Dinner"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.3, "top":0.58}
+                font_size: 24
+            TextInput:
+                id: calorie
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.51, "top":0.46}
+                size_hint: 0.48, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "carbs"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.2, "top":0.48}
+                font_size: 24
+            Label:
+                text: "Protien"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.35, "top":0.48}
+                font_size: 24
+            Label:
+                text: "fats"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.5, "top":0.48}
+                font_size: 24
+            TextInput:
+                id: carbs
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.55, "top":0.36}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: protien
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.7, "top":0.36}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            TextInput:
+                id: fats
+                font_size: (root.width**2 + root.height**2) / 13**4
+                multiline: False
+                pos_hint: {"x": 0.86, "top":0.36}
+                size_hint: 0.1, 0.06
+                on_text_validate: root.on_enter()
+                hint_text_color: 0,0,0,1
+            Label:
+                text: "Macros"
+                size_hint: 0.8, 0.2
+                color: 1, 0.64, 0, 1
+                font_name: 'Arial'
+                pos_hint: {"x":0.05, "top":0.44}
+                font_size: 24
+
+
+
+            Button:
+                pos_hint:{"x":0.02,"y":0.93}
+                size_hint: 0.2, 0.05
+                background_color: 0, 0.75, 1, 1
+                font_size: 20
+                text: "profile"
+                color: 1, 0.64, 0, 1
+            ImageButton:
+                source: 'plus.png'
+                pos_hint:{"x":0.3,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'add.png'
+                pos_hint:{"x":0.45,"y":0.03}
+                size_hint: 0.27, 0.09
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'settings.png'
+                pos_hint:{"x":0.6,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+            ImageButton:
+                source: 'exit.png'
+                pos_hint:{"x":0.75,"y":0.03}
+                size_hint: 0.27, 0.08
+                y: self.parent.y + self.parent.height - 200
+                x: self.parent.x-10
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "down"
+
+                
+            
+    
+    
+    
+    
